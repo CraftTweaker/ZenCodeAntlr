@@ -1,0 +1,14 @@
+.gradle
+.idea
+build
+ZenCodeAntlr.iml
+ZenCodeAntlr.ipr
+ZenCodeAntlr.iws
+src/main/java
+src/main/gen/
+
+src/main/antlr/gen/
+
+src/main/antlr/.antlr/
+
+.project

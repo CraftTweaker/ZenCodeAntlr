@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+    id 'antlr'
+    id 'idea'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    antlr "org.antlr:antlr4:4.9.2"
+    compile "org.antlr:antlr4-runtime:4.9.2"
+    testImplementation(platform('org.junit:junit-bom:5.7.0'))
+    testImplementation('org.junit.jupiter:junit-jupiter')
+}
+
+generateGrammarSource {
+    maxHeapSize = "1024M"
+    arguments += ['-package', 'com.blamejared.zencode.parser']
+    outputDirectory = file('./src/main/java/com/blamejared/zencode/parser')
+}
+compileJava.dependsOn generateGrammarSource
+
+clean {
+    delete "./src/main/java"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        events "passed", "skipped", "failed"
+    }
+}

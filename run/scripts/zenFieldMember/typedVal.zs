@@ -1,0 +1,1 @@
+val variadic as bool;
